@@ -1,0 +1,100 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "2491593a0e550b8274d1ccefeb2a158d",
+    "content-hash": "0248541640b45311174b80ff49051dc0",
+    "packages": [
+        {
+            "name": "quazardous/php-bump-version",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/quazardous/php-bump-version.git",
+                "reference": "2b0fac70c522e7fb4b8e1a2e1429195a2c29a3f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/quazardous/php-bump-version/zipball/2b0fac70c522e7fb4b8e1a2e1429195a2c29a3f3",
+                "reference": "2b0fac70c522e7fb4b8e1a2e1429195a2c29a3f3",
+                "shasum": ""
+            },
+            "require": {
+                "vanilla/garden-cli": "^1.0"
+            },
+            "bin": [
+                "bin/bump_version"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Quazardous\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Quazardous",
+                    "email": "berliozdavid@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Bump version and other GIT helpers",
+            "time": "2016-02-08 08:36:22"
+        },
+        {
+            "name": "vanilla/garden-cli",
+            "version": "v1.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vanilla/garden-cli.git",
+                "reference": "91d59980460c44d237cadd489b2a1a5755786a30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vanilla/garden-cli/zipball/91d59980460c44d237cadd489b2a1a5755786a30",
+                "reference": "91d59980460c44d237cadd489b2a1a5755786a30",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Garden\\Cli\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Todd Burry",
+                    "email": "todd@vanillaforums.com"
+                }
+            ],
+            "description": "A full-featured, yet ridiculously simple commandline parser for your next php cli script. Stop fighting with getopt().",
+            "time": "2016-04-22 15:36:37"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

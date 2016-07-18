@@ -1,0 +1,26 @@
+{
+	"name" : "quazardous/php-bump-version",
+	"type" : "library",
+    "description" : "PHP Bump version and other GIT helpers",
+    "license" : "MIT",
+    "authors" : [{
+            "name" : "Quazardous",
+            "email" : "berliozdavid@gmail.com",
+            "role" : "Developer"
+        }
+    ],
+	"autoload" : {
+		"psr-4" : {
+			"Quazardous\\" : "src/"
+		}
+	},
+	"require" : {
+	    "vanilla/garden-cli": "^1.0"
+	},
+	"bin": ["bin/bump_version"],
+	"extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

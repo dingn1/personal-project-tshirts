@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    div
+    {
+    width:1000px;
+    height:1000px;
+    background:red;
+    animation:myfirst 5s;
+    -moz-animation:myfirst 5s; /* Firefox */
+    -webkit-animation:myfirst 5s; /* Safari and Chrome */
+    -o-animation:myfirst 5s; /* Opera */
+    -webkit-animation-iteration-count:10000;
+    -webkit-animation-direction:alternate;
+
+    }
+
+    @-webkit-keyframes myfirst /* Safari and Chrome */
+    {
+    from {background:green;}
+    to {background:white;
+    }
+    </style>
+  </head>
+  <body>
+
+  <div></div>
+
+  <p><b>注释：</b>本例在 Internet Explorer 中无效。</p>
+
+  </body>
+</html>

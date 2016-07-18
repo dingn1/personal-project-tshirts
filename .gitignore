@@ -1,0 +1,14 @@
+*~
+.idea/
+.irbrc
+coverage/
+doc/
+dump.rdb
+legacy_json/
+log/*
+npm-debug.log
+.DS_Store
+tmp/*
+**/node_modules/*
+**/bower_components/*
+**/*.swp

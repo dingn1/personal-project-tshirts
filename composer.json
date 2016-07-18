@@ -1,0 +1,5 @@
+{
+    "require": {
+        "quazardous/php-bump-version": "^1.0"
+    }
+}

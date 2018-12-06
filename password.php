@@ -34,22 +34,22 @@
   session_start();
   $username=isset($_POST["username"])?$_POST["username"]:"";
 
-  if($username) {
-    $connect = mysql_connect("127.0.0.1","root","") or die("Couldnt connect to database");
-    mysql_select_db("login") or die ("Couldnt find database");
-    $query = mysql_query("SELECT * FROM users WHERE username='$username'");
-    $numrows = mysql_num_rows($query);
-    if($numrows != 0) {
-      while($row = mysql_fetch_assoc($query)) {
-        $dbusername = $row['username'];
-        $dbpassword = $row['password'];
+  if ($username) {
+      $connect = mysql_connect('localhost', 'root', '') or die('Couldnt connect to database');
+      mysql_select_db('login') or die('Couldnt find database');
+      $query = mysql_query("SELECT * FROM users WHERE username='$username'");
+      $numrows = mysql_num_rows($query);
+      if ($numrows != 0) {
+          while ($row = mysql_fetch_assoc($query)) {
+              $dbusername = $row['username'];
+              $dbpassword = $row['password'];
+          }
+          $_SESSION['password']=$dbpassword;
+          header("location: questionindex.php");
+      } else {
+          die('That username doesnt exist');
       }
-      $_SESSION['password']=$dbpassword;
-      header ("location: questionindex.php");
-    } else {
-      die ("That username doesnt exist");
-    }
   } else {
-    die("Please enter a username.");
+      die('Please enter a username.');
   }
 ?>

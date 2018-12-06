@@ -14,8 +14,8 @@
       header("location:loginindex.php");
     }
 
-    $connect = MYSQL_CONNECT( "localhost", "root", "") or die("Unable to connect to MySQL server");
-    mysql_select_db( "tryon") or die("Unable to select database");
+    $connect = MYSQL_CONNECT('localhost', 'root', '') or die('Unable to connect to MySQL server');
+    mysql_select_db('tryon') or die('Unable to select database');
     $result=MYSQL_QUERY("select name from tryon where username='$username'");
     $numrows = mysql_num_rows($result);
 

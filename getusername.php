@@ -32,24 +32,24 @@
 
 <?php
   session_start();
-  $emailaddress=isset($_POST["emailaddress"])?$_POST["emailaddress"]:"";
+  $emailaddress=isset($_POST['emailaddress'])?$_POST['emailaddress']:'';
 
-  if($emailaddress) {
-    $connect = mysql_connect("127.0.0.1","root","") or die("Couldnt connect to database");
-    mysql_select_db("login") or die ("Couldnt find database");
-    $query = mysql_query("SELECT * FROM users WHERE emailaddress='$emailaddress'");
-    $numrows = mysql_num_rows($query);
-    if($numrows != 0) {
-      while($row = mysql_fetch_assoc($query)) {
-        $dbemailaddress = $row['emailaddress'];
-        $dbpassword = $row['password'];
+  if ($emailaddress) {
+      $connect = mysql_connect('localhost', 'root', '') or die('Couldnt connect to database');
+      mysql_select_db('login') or die('Couldnt find database');
+      $query = mysql_query("SELECT * FROM users WHERE emailaddress='$emailaddress'");
+      $numrows = mysql_num_rows($query);
+      if ($numrows != 0) {
+          while ($row = mysql_fetch_assoc($query)) {
+              $dbemailaddress = $row['emailaddress'];
+              $dbpassword = $row['password'];
+          }
+          $_SESSION['password']=$dbpassword;
+          header("location: questionindex.php");
+      } else {
+          die('That email address doesnt exist');
       }
-        $_SESSION['password']=$dbpassword;
-        header ("location: questionindex.php");
-    } else {
-      die ("That email address doesnt exist");
-    }
   } else {
-    die("Please enter a email address.");
+      die('Please enter a email address.');
   }
 ?>

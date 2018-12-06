@@ -30,30 +30,30 @@
 
 <?php
   session_start();
-  $securequestion=$_POST["securequestion"];
-  $answer=$_POST["answer"];
+  $securequestion=$_POST['securequestion'];
+  $answer=$_POST['answer'];
 
-  if($securequestion&&$answer) {
-    $connect = mysql_connect("127.0.0.1","root","") or die("Couldnt connect to database");
-    mysql_select_db("login") or die ("Couldnt find database");
-    $query = mysql_query("SELECT * FROM users WHERE securequestion='$securequestion' and answer='$answer'");
-    $numrows = mysql_num_rows($query);
-    if($numrows != 0) {
-      while($row = mysql_fetch_assoc($query)) {
-        $dbsecurequestion = $row['securequestion'];
-        $dbanswer = $row['answer'];
-        $dbid=$row['id'];
-        $username=$row['username'];
-        $password=$row['password'];
+  if ($securequestion&&$answer) {
+      $connect = mysql_connect('localhost', 'root', '') or die('Couldnt connect to database');
+      mysql_select_db('login') or die('Couldnt find database');
+      $query = mysql_query("SELECT * FROM users WHERE securequestion='$securequestion' and answer='$answer'");
+      $numrows = mysql_num_rows($query);
+      if ($numrows != 0) {
+          while ($row = mysql_fetch_assoc($query)) {
+              $dbsecurequestion = $row['securequestion'];
+              $dbanswer = $row['answer'];
+              $dbid=$row['id'];
+              $username=$row['username'];
+              $password=$row['password'];
+          }
+          if ($securequestion == $dbsecurequestion&&$answer == $dbanswer) {
+              echo "Successful. Your password is:".$password;
+              echo "your username is:".$username;
+          } else {
+              echo "Incorrect answer";
+          }
       }
-      if($securequestion == $dbsecurequestion&&$answer == $dbanswer) {
-        echo "Successful. Your password is:".$password;
-        echo "your username is:".$username;
-      } else {
-        echo "Incorrect answer";
-      }
-    }
   } else {
-    die("Please enter an  answer");
+      die('Please enter an  answer');
   }
 ?>

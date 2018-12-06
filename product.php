@@ -22,31 +22,32 @@
 
       <?php
         session_start();
-        if(isset($_SESSION['username'])) {
-          include('includes/nav2.php');
-          echo "<div class='info'>";
-          echo "You are logged in as: ".$_SESSION['username'];
-          echo "<p>";
-          echo "<a href='logout.php'>Click here to logout</a>";
-          echo "</div>";
+        if (isset($_SESSION['username'])) {
+            include('includes/nav2.php');
+            echo "<div class='info'>";
+            echo "You are logged in as: ".$_SESSION['username'];
+            echo "<p>";
+            echo "<a href='logout.php'>Click here to logout</a>";
+            echo "</div>";
         } else {
-          include('includes/nav.php');
-          echo"Please log in.";
+            include('includes/nav.php');
+            echo"Please log in.";
         }
       ?>
       <div id="content">
         <?php
-          if(isset($_GET['name'])) {
-            $name=$_GET['name'];
-            $connect = MYSQL_CONNECT( "localhost", "root", "") or die("Unable to connect to MySQL server");
-            mysql_select_db( "product") or die("Unable to select database");
-            $result=mysql_query("SELECT id ,description FROM product where name='$name'") or die("Can't Perform Query");
-            While ($row=mysql_fetch_row($result)){
-            echo "<img src=\"getdata2.php?id=$row[0]\"><br><br>";
-            $description=$row[1];
-            echo"$description";
+          if (isset($_GET['name'])) {
+              $name=$_GET['name'];
+              $connect = MYSQL_CONNECT('localhost', 'root', '') or die('Unable to connect to MySQL server');
+              mysql_select_db('product') or die('Unable to select database');
+              $result=mysql_query("SELECT id ,description FROM product where name='$name'") or die("Can't Perform Query");
+              while ($row=mysql_fetch_row($result)) {
+                  echo "<img src=\"getdata2.php?id=$row[0]\"><br><br>";
+                  $description=$row[1];
+                  echo"$description";
+              }
+              echo "<br><a href=\"add.php?nameb=$name\">add $name to wish list</a><br>";
           }
-          echo "<br><a href=\"add.php?nameb=$name\">add $name to wish list</a><br>";}
         ?>
 
         <h1></h1>

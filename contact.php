@@ -21,15 +21,15 @@
 
       <?php
         session_start();
-        if(isset($_SESSION['username'])) {
-          include('includes/nav2.php');
-          echo "<div class='info'>";
-          echo "You are logged in as: ".$_SESSION['username'];
-          echo "<p>";
-          echo "<a href='logout.php'>Click here to logout</a>";
-          echo "</div>";
+        if (isset($_SESSION['username'])) {
+            include('includes/nav2.php');
+            echo "<div class='info'>";
+            echo "You are logged in as: ".$_SESSION['username'];
+            echo "<p>";
+            echo "<a href='logout.php'>Click here to logout</a>";
+            echo "</div>";
         } else {
-          include('includes/nav.php');
+            include('includes/nav.php');
         }
       ?>
 

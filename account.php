@@ -21,48 +21,47 @@
 
       <?php
         session_start();
-        if(isset($_SESSION['username'])) {
-          include('includes/nav2.php');
-          echo "<div class='info'>";
-          echo "You are logged in as: ".$_SESSION['username'];
-          echo "<p>";
-          echo "<a href='logout.php'>Click here to logout</a>";
-          echo "</div>";
-          $username=$_SESSION['username'];
+        if (isset($_SESSION['username'])) {
+            include('includes/nav2.php');
+            echo "<div class='info'>";
+            echo "You are logged in as: ".$_SESSION['username'];
+            echo "<p>";
+            echo "<a href='logout.php'>Click here to logout</a>";
+            echo "</div>";
+            $username=$_SESSION['username'];
         } else {
-          header ("location: loginindex.php");
+            header("location: loginindex.php");
         }
       ?>
       <div id="content">
         <?php
-          if(isset($_POST['address'])&&isset($_POST['mobile'])&&isset($_POST['email'])&&isset($_POST['name'])&&isset($_POST['zip'])) {
-            $zip=$_POST['zip'];
-            $address = $_POST['address'];
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $name = $_POST['name'];
-            $mobile=$_POST['mobile'];
-            $connect = mysql_connect("127.0.0.1","root","") or die("Couldnt connect to database");
-            mysql_select_db("shopping") or die ("Couldnt find database");
-            if(!empty($address)&&!empty($mobile)&&!empty($email)&&!empty($name)&&!empty($zip)) {
-              $query = "INSERT INTO shopping (zipcode, address, mobile, name, email,username) VALUES( '$zip', '$address', '$mobile', '$name', '$email','$username')";
-              if($query_run = mysql_query($query)) {
-                header('Location: youraccount.php');
-
+          if (isset($_POST['address'])&&isset($_POST['mobile'])&&isset($_POST['email'])&&isset($_POST['name'])&&isset($_POST['zip'])) {
+              $zip=$_POST['zip'];
+              $address = $_POST['address'];
+              $name = $_POST['name'];
+              $email = $_POST['email'];
+              $name = $_POST['name'];
+              $mobile=$_POST['mobile'];
+              $connect = mysql_connect('localhost', 'root', '') or die('Couldnt connect to database');
+              mysql_select_db('shopping') or die('Couldnt find database');
+              if (!empty($address)&&!empty($mobile)&&!empty($email)&&!empty($name)&&!empty($zip)) {
+                  $query = "INSERT INTO shopping (zipcode, address, mobile, name, email,username) VALUES( '$zip', '$address', '$mobile', '$name', '$email','$username')";
+                  if ($query_run = mysql_query($query)) {
+                      header('Location: youraccount.php');
+                  } else {
+                      echo 'Sorry, we couldn\'t add your information at this time. Try again later.';
+                  }
               } else {
-                echo 'Sorry, we couldn\'t add your information at this time. Try again later.';
+                  echo 'All fields are required.';
               }
-            } else {
-              echo 'All fields are required.';
-            }
           } else {
-            $username = '';
-            $password = '';
-            $password_again = '';
-            $securequestion = '';
-            $answer = '';
-            $emailaddress = '';
-            $name = '';
+              $username = '';
+              $password = '';
+              $password_again = '';
+              $securequestion = '';
+              $answer = '';
+              $emailaddress = '';
+              $name = '';
           }
         ?>
         <br>

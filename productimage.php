@@ -21,51 +21,50 @@
       <?php include('includes/nav2.php'); ?>
       <?php
       session_start();
-      if(isset($_SESSION['username'])&&$_SESSION['username']=="dingn1") {
-        echo "<div class='info'>";
-        echo "You are logged in as: ".$_SESSION['username'];
-        echo "<p>";
-        echo "<a href='logout.php'>Click here to lgout</a>";
-        echo "</div>";
-      } else if(isset($_SESSION['username'])&&$_SESSION['username']!="dingn1") {
-        header ("location: youraccount.php");
+      if (isset($_SESSION['username'])&&$_SESSION['username']=="dingn1") {
+          echo "<div class='info'>";
+          echo "You are logged in as: ".$_SESSION['username'];
+          echo "<p>";
+          echo "<a href='logout.php'>Click here to lgout</a>";
+          echo "</div>";
+      } elseif (isset($_SESSION['username'])&&$_SESSION['username']!="dingn1") {
+          header("location: youraccount.php");
       } else {
-        header ("location: loginindex.php");
+          header("location: loginindex.php");
       }
 
       if (isset($_POST['submit'])) {
-        $form_description = $_POST['form_description'];
+          $form_description = $_POST['form_description'];
 
-        $form_name = $_POST['name'];
+          $form_name = $_POST['name'];
 
-        $favor=$_POST['favor'];
+          $favor=$_POST['favor'];
 
-        $form_data_name = $_FILES['form_data']['name'];
+          $form_data_name = $_FILES['form_data']['name'];
 
-        $form_data_size = $_FILES['form_data']['size'];
+          $form_data_size = $_FILES['form_data']['size'];
 
-        $form_data_type = $_FILES['form_data']['type'];
+          $form_data_type = $_FILES['form_data']['type'];
 
-        $form_data = $_FILES['form_data']['tmp_name'];
+          $form_data = $_FILES['form_data']['tmp_name'];
 
-        $connect = MYSQL_CONNECT( "localhost", "root", "") or die("Unable to connect to MySQL server");
+          $connect = MYSQL_CONNECT('localhost', 'root', '') or die('Unable to connect to MySQL server');
 
-        mysql_select_db( "product") or die("Unable to select database");
+          mysql_select_db('product') or die('Unable to select database');
 
-        $data = addslashes(fread(fopen($form_data, "r"), filesize($form_data)));
+          $data = addslashes(fread(fopen($form_data, "r"), filesize($form_data)));
 
-        //echo "mysqlPicture=".$data;
+          //echo "mysqlPicture=".$data;
 
-        $result=MYSQL_QUERY( "INSERT INTO product (description,bin_data,filename,filesize,filetype,name,favor) VALUES ('$form_description','$data','$form_data_name','$form_data_size','$form_data_type','$form_name','$favor')");
+          $result=MYSQL_QUERY("INSERT INTO product (description,bin_data,filename,filesize,filetype,name,favor) VALUES ('$form_description','$data','$form_data_name','$form_data_size','$form_data_type','$form_name','$favor')");
 
-        $id= mysql_insert_id();
+          $id= mysql_insert_id();
 
-        print "<p>This file has the following Database ID: <a href='getdata3.php'>abc</a>";
+          print "<p>This file has the following Database ID: <a href='getdata3.php'>abc</a>";
 
-        MYSQL_CLOSE();
+          MYSQL_CLOSE();
       } else {
-
-      ?>
+          ?>
 
       <center>
 
@@ -88,8 +87,7 @@
       </center>
 
       <?php
-
-        }
+      }
 
       ?>
 

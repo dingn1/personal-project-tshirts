@@ -22,30 +22,30 @@
 
       <?php
       session_start();
-      if(isset($_SESSION['username'])) {
-        include('includes/nav2.php');
-        echo "<div class='info'>";
-        echo "You are logged in as: ".$_SESSION['username'];
-        echo "<p>";
-        echo "<a href='logout.php'>Click here to logout</a>";
-        echo "</div>";
-        $username=$_SESSION['username'];
+      if (isset($_SESSION['username'])) {
+          include('includes/nav2.php');
+          echo "<div class='info'>";
+          echo "You are logged in as: ".$_SESSION['username'];
+          echo "<p>";
+          echo "<a href='logout.php'>Click here to logout</a>";
+          echo "</div>";
+          $username=$_SESSION['username'];
       } else {
-        header ("location: loginindex.php");
+          header("location: loginindex.php");
       }
 
       ?>
       <div id="content">
         <?php
-          $connect = mysql_connect("127.0.0.1","root","") or die("Couldnt connect to database");
-          mysql_select_db("shopping") or die ("Couldnt find database");
+          $connect = mysql_connect('localhost', 'root', '') or die('Couldnt connect to database');
+          mysql_select_db('shopping') or die('Couldnt find database');
           $query = mysql_query("SELECT * FROM shopping WHERE username='$username'");
-          while($row = mysql_fetch_assoc($query)) {
-             $dbusername = $row['username'];
-             $email=$row['email'];
-             $address=$row['address'];
-             $mobile=$row['mobile'];
-             $zip=$row['zipcode'];
+          while ($row = mysql_fetch_assoc($query)) {
+              $dbusername = $row['username'];
+              $email=$row['email'];
+              $address=$row['address'];
+              $mobile=$row['mobile'];
+              $zip=$row['zipcode'];
           }
           echo"your email address is $email.<br> your address is $address. <br> your zip code is $zip. <br> yout phone number is $mobile.";
         ?>

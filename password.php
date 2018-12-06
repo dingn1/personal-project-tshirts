@@ -32,7 +32,7 @@
 
 <?php
   session_start();
-  $username=isset($_POST["username"])?$_POST["username"]:"";
+  $username=isset($_POST['username'])?$_POST['username']:'';
 
   if ($username) {
       $connect = mysql_connect('localhost', 'root', '') or die('Couldnt connect to database');

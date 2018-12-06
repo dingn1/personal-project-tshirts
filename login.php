@@ -31,8 +31,8 @@
 
 <?php
   session_start();
-  $username=isset($_POST['username'])?$_POST['username']:"";
-  $password=isset($_POST['password'])?$_POST['password']:"";
+  $username=isset($_POST['username'])?$_POST['username']:'';
+  $password=isset($_POST['password'])?$_POST['password']:'';
 
   if ($username&&$password) {
       $connect = mysql_connect('localhost', 'root', '') or die('Couldnt connect to database');

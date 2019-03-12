@@ -1,2 +1,2 @@
 # personal-project-tshirts
- This is my personal project tryon system.
+ This is my personal project tshirts tryon system.
